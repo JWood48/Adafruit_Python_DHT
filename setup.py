@@ -22,6 +22,9 @@ elif '--force-pi2' in sys.argv:
 elif '--force-bbb' in sys.argv:
 	platform = platform_detect.BEAGLEBONE_BLACK
 	sys.argv.remove('--force-bbb')
+elif '--force-chip' in sys.argv:
+	platform = platform_detect.BCHIP
+	sys.argv.remove('--force-bbb')
 elif '--force-test' in sys.argv:
 	platform = 'TEST'
 	sys.argv.remove('--force-test')
@@ -51,6 +54,11 @@ if platform == platform_detect.RASPBERRY_PI:
 elif platform == platform_detect.BEAGLEBONE_BLACK:
 	extensions.append(Extension("Adafruit_DHT.Beaglebone_Black_Driver",
 								["source/_Beaglebone_Black_Driver.c", "source/common_dht_read.c", "source/Beaglebone_Black/bbb_dht_read.c", "source/Beaglebone_Black/bbb_mmio.c"],
+								libraries=['rt'],
+								extra_compile_args=['-std=gnu99']))
+elif platform == platform_detect.CHIP:
+	extensions.append(Extension("Adafruit_DHT.CHIP_Driver",
+								["source/_CHIP_Driver.c", "source/common_dht_read.c", "source/CHIP/chip_dht_read.c", "source/CHIP/chip_mmio.c"],
 								libraries=['rt'],
 								extra_compile_args=['-std=gnu99']))
 elif platform == 'TEST':

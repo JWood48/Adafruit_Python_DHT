@@ -31,6 +31,7 @@ import re
 UNKNOWN          = 0
 RASPBERRY_PI     = 1
 BEAGLEBONE_BLACK = 2
+CHIP = 3
 
 
 def platform_detect():
