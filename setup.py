@@ -23,8 +23,8 @@ elif '--force-bbb' in sys.argv:
 	platform = platform_detect.BEAGLEBONE_BLACK
 	sys.argv.remove('--force-bbb')
 elif '--force-chip' in sys.argv:
-	platform = platform_detect.BCHIP
-	sys.argv.remove('--force-bbb')
+	platform = platform_detect.CHIP
+	sys.argv.remove('--force-chip')
 elif '--force-test' in sys.argv:
 	platform = 'TEST'
 	sys.argv.remove('--force-test')

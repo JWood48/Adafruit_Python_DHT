@@ -41,7 +41,7 @@ static inline void chip_mmio_set_input(const int gpio_number) {
 
 static inline void chip_mmio_set_output(const int gpio_number) {
   // First set to 000 using input function.
-  pi_mmio_set_input(gpio_number);
+  chip_mmio_set_input(gpio_number);
   // Next set bit 0 to 1 to set output.
   *(chip_mmio_gpio+((gpio_number)/10)) |=  (1<<(((gpio_number)%10)*3));
 }
@@ -54,8 +54,8 @@ static inline void chip_mmio_set_low(const int gpio_number) {
   *(chip_mmio_gpio+10) = 1 << gpio_number;
 }
 
-static inline uint32_t pi_mmio_input(const int gpio_number) {
-  return *(pi_mmio_gpio+13) & (1 << gpio_number);
+static inline uint32_t chip_mmio_input(const int gpio_number) {
+  return *(chip_mmio_gpio+13) & (1 << gpio_number);
 }
 
 #endif
