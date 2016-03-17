@@ -37,6 +37,9 @@ CHIP = 3
 def platform_detect():
     """Detect if running on the Raspberry Pi or Beaglebone Black and return the
     platform type.  Will return RASPBERRY_PI, BEAGLEBONE_BLACK, or UNKNOWN."""
+    # Handle CHIP
+    return CHIP
+    
     # Handle Raspberry Pi
     pi = pi_version()
     if pi is not None:
