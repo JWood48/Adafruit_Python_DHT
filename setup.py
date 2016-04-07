@@ -23,7 +23,7 @@ elif '--force-bbb' in sys.argv:
 	platform = platform_detect.BEAGLEBONE_BLACK
 	sys.argv.remove('--force-bbb')
 elif '--force-chip' in sys.argv:
-	platform = platform_detect.CHIP
+	platform = platform_detect.C_H_I_P
 	sys.argv.remove('--force-chip')
 elif '--force-test' in sys.argv:
 	platform = 'TEST'
@@ -32,9 +32,12 @@ else:
 	# No explicit platform chosen, detect the current platform.
 	platform = platform_detect.platform_detect()
 
+print "PLATFORM: "+`platform`
+
 # Pick the right extension to compile based on the platform.
 extensions = []
 if platform == platform_detect.RASPBERRY_PI:
+	print "PI detected..."
 	# Get the Pi version (1 or 2)
 	if pi_version is None:
 		pi_version = platform_detect.pi_version()
@@ -52,13 +55,15 @@ if platform == platform_detect.RASPBERRY_PI:
 	else:
 		raise RuntimeError('Detected Pi version that has no appropriate driver available.')
 elif platform == platform_detect.BEAGLEBONE_BLACK:
+	print "BBB detected..."
 	extensions.append(Extension("Adafruit_DHT.Beaglebone_Black_Driver",
 								["source/_Beaglebone_Black_Driver.c", "source/common_dht_read.c", "source/Beaglebone_Black/bbb_dht_read.c", "source/Beaglebone_Black/bbb_mmio.c"],
 								libraries=['rt'],
 								extra_compile_args=['-std=gnu99']))
-elif platform == platform_detect.CHIP:
-	extensions.append(Extension("Adafruit_DHT.CHIP_Driver",
-								["source/_CHIP_Driver.c", "source/common_dht_read.c", "source/CHIP/chip_dht_read.c", "source/CHIP/chip_mmio.c"],
+elif platform == platform_detect.C_H_I_P:
+	print "C_H_I_P detected..."
+	extensions.append(Extension("Adafruit_DHT.C_H_I_P_Driver",
+								["source/_C_H_I_P_Driver.c", "source/common_dht_read.c", "source/C_H_I_P/chip_dht_read.c", "source/C_H_I_P/chip_mmio.c"],
 								libraries=['rt'],
 								extra_compile_args=['-std=gnu99']))
 elif platform == 'TEST':

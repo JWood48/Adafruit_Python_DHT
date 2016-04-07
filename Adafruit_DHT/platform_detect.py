@@ -31,14 +31,14 @@ import re
 UNKNOWN          = 0
 RASPBERRY_PI     = 1
 BEAGLEBONE_BLACK = 2
-CHIP = 3
+C_H_I_P          = 3
 
 
 def platform_detect():
     """Detect if running on the Raspberry Pi or Beaglebone Black and return the
     platform type.  Will return RASPBERRY_PI, BEAGLEBONE_BLACK, or UNKNOWN."""
-    # Handle CHIP
-    return CHIP
+    # Handle C_H_I_P
+    return C_H_I_P
     
     # Handle Raspberry Pi
     pi = pi_version()

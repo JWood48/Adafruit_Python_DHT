@@ -26,9 +26,13 @@ import Adafruit_DHT
 # Adafruit_DHT.DHT22, or Adafruit_DHT.AM2302.
 sensor = Adafruit_DHT.DHT22
 
+# Example using a C_H_I_P with DHT sensor
+# connected to pin XIO_P0.
+pin = 'XIO_P0'
+
 # Example using a Beaglebone Black with DHT sensor
 # connected to pin P8_11.
-pin = 'P8_11'
+#pin = 'P8_11'
 
 # Example using a Raspberry Pi with DHT sensor
 # connected to GPIO23.

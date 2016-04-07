@@ -41,6 +41,7 @@ SENSORS = [DHT11, DHT22, AM2302]
 def get_platform():
 	"""Return a DHT platform interface for the currently detected platform."""
 	plat = platform_detect.platform_detect()
+	print "PLAT_DETECT: "+`plat`
 	if plat == platform_detect.RASPBERRY_PI:
 		# Check for version 1 or 2 of the pi.
 		version = platform_detect.pi_version()
@@ -55,9 +56,9 @@ def get_platform():
 	elif plat == platform_detect.BEAGLEBONE_BLACK:
 		import Beaglebone_Black
 		return Beaglebone_Black
-	elif plat == platform_detect.CHIP:
-		import CHIP
-		return CHIP
+	elif plat == platform_detect.C_H_I_P:
+		import C_H_I_P
+		return C_H_I_P
 	else:
 		raise RuntimeError('Unknown platform.')
 
